@@ -24,6 +24,19 @@ int main(int argc,char **argv){
     cbreak();//ctr+c exits program
 
     int yMax,xMax;
+
+    getmaxyx(stdscr,yMax,xMax);
+    while(yMax < 30 || xMax < 90)
+    {
+        getmaxyx(stdscr,yMax,xMax);
+        clear();
+        printw("Make screen larger. yMax > 30 (%d), xMax > 90(%d) !",yMax,xMax);
+
+        refresh();
+    }
+
+    clear();
+    refresh();
     getmaxyx(stdscr,yMax,xMax);
 
     WINDOW* gameWin = newwin(GAME_WIN_HEIGHT,GAME_WIN_WIDTH,(yMax/2)-10,GAME_WIN_X);
