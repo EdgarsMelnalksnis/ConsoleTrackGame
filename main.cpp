@@ -14,26 +14,39 @@
 
 int main(int argc,char **argv){	
     WINDOW* menuWin;
-    WINDOW* gameWin;
-    Vehicle *c = new Vehicle(gameWin,1,1,'0');
     std::string menu[3] = {"GAME","TRACK","HELP"};
     int menuChoice;
     int menuHighlight = 0;
 
     initscr();
+    noecho();
     cbreak();//ctr+c exits program
 
+    int yMax,xMax;
+    getmaxyx(stdscr,yMax,xMax);
+
+    WINDOW* gameWin = newwin(20,50,(yMax/2)-10,10);
+    box(gameWin,0,0);
+    refresh();
+    wrefresh(gameWin);
+
+    Vehicle *c = new Vehicle(gameWin,1,1,'0');
+
+
     menuWin = newwin(INS_WIN_HEIGHT,INS_WIN_WIDTH,INS_WIN_Y,INS_WIN_X);   
-    gameWin = newwin(GAME_WIN_HEIGHT,GAME_WIN_WIDTH,GAME_WIN_Y,GAME_WIN_X);   
     refresh();
 
-    box(gameWin,0,0);
-    mvwprintw(gameWin,1,1,"game");
-    wrefresh(gameWin);
-    //box(menuWin,0,0);
+    box(menuWin,0,0);
     mvwprintw(menuWin,1,1,"MENU");
     wrefresh(menuWin);
     keypad(menuWin,true);
+
+
+
+    do{
+        c->display();
+        wrefresh(gameWin);
+    }while(c->getMove() != 'x');
 
     while(1)
     {
