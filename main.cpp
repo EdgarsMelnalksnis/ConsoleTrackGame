@@ -13,6 +13,7 @@
 #define ENTER 10
 
 int main(int argc,char **argv){	
+    //test
     WINDOW* menuWin;
     std::string menu[3] = {"GAME","TRACK","HELP"};
     int menuChoice;
