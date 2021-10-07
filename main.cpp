@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ncurses.h>
+#include "vehicle.h"
 
 #define GAME_WIN_HEIGHT 30
 #define GAME_WIN_WIDTH 40
@@ -14,6 +15,7 @@
 int main(int argc,char **argv){	
     WINDOW* menuWin;
     WINDOW* gameWin;
+    Vehicle *c = new Vehicle(gameWin,1,1,'0');
     std::string menu[3] = {"GAME","TRACK","HELP"};
     int menuChoice;
     int menuHighlight = 0;
