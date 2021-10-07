@@ -2,10 +2,10 @@
 #include <ncurses.h>
 #include "vehicle.h"
 
-#define GAME_WIN_HEIGHT 30
-#define GAME_WIN_WIDTH 40
+#define GAME_WIN_HEIGHT 20
+#define GAME_WIN_WIDTH 50
 #define GAME_WIN_Y 5
-#define GAME_WIN_X 2
+#define GAME_WIN_X 10
 #define INS_WIN_HEIGHT 10
 #define INS_WIN_WIDTH 20
 #define INS_WIN_Y 5
@@ -26,7 +26,7 @@ int main(int argc,char **argv){
     int yMax,xMax;
     getmaxyx(stdscr,yMax,xMax);
 
-    WINDOW* gameWin = newwin(20,50,(yMax/2)-10,10);
+    WINDOW* gameWin = newwin(GAME_WIN_HEIGHT,GAME_WIN_WIDTH,(yMax/2)-10,GAME_WIN_X);
     box(gameWin,0,0);
     refresh();
     wrefresh(gameWin);
@@ -34,7 +34,7 @@ int main(int argc,char **argv){
     Vehicle *c = new Vehicle(gameWin,1,1,'0');
 
 
-    menuWin = newwin(INS_WIN_HEIGHT,INS_WIN_WIDTH,INS_WIN_Y,INS_WIN_X);   
+    menuWin = newwin(INS_WIN_HEIGHT,INS_WIN_WIDTH,(yMax/2-10),GAME_WIN_X+GAME_WIN_WIDTH+5);   
     refresh();
 
     box(menuWin,0,0);
