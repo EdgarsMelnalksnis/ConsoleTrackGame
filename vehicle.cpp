@@ -18,7 +18,7 @@ void Vehicle::moveUp()
 void Vehicle::moveDown()
 {
     yPos++;
-    if(yPos > yMax-1) yPos = yMax-1;
+    if(yPos > yMax-2) yPos = yMax-2;
 }
 
 void Vehicle::moveLeft()
@@ -30,7 +30,7 @@ void Vehicle::moveLeft()
 void Vehicle::moveRight()
 {
     xPos++;
-    if(xPos > xMax-1) xPos = xMax -1;
+    if(xPos > xMax-2) xPos = xMax -2;
 }
 int Vehicle::getMove()
 {
@@ -45,8 +45,10 @@ int Vehicle::getMove()
                 break;
             case KEY_LEFT:
                 moveLeft();
+                break;
             case KEY_RIGHT:
                 moveRight();
+                break;
             default:
                 break;
         }
