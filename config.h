@@ -13,6 +13,7 @@
 #define TAB (9)
 #define SPACE (32)
 #define ESCAPE (27)
-
+#define YMIN (30)
+#define XMIN (90)
 
 #endif
