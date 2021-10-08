@@ -3,6 +3,20 @@
 #include "vehicle.h"
 #include "config.h"
 
+void checkScreenSize(int ymin,int xmin)
+{
+    int y,x;
+    getmaxyx(stdscr,y,x);
+    while(y < ymin || x < xmin)
+    {
+        getmaxyx(stdscr,y,x);
+        clear();
+        printw("Make screen larger. yMax > %d (%d), xMax > %d(%d) !",ymin,y,xmin,x);
+
+        refresh();
+    }
+}
+
 int main(int argc,char **argv){	
     //test
     WINDOW* menuWin;
@@ -16,15 +30,7 @@ int main(int argc,char **argv){
 
     int yMax,xMax;
 
-    getmaxyx(stdscr,yMax,xMax);
-    while(yMax < 30 || xMax < 90)
-    {
-        getmaxyx(stdscr,yMax,xMax);
-        clear();
-        printw("Make screen larger. yMax > 30 (%d), xMax > 90(%d) !",yMax,xMax);
-
-        refresh();
-    }
+    checkScreenSize(YMIN,XMIN);
 
     clear();
     refresh();
