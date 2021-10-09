@@ -5,6 +5,11 @@
 
 class MenuItem {
     public:
+        MenuItem(string text,char trig)
+        {
+            this-> menuText = text;
+            this-> trigger = trig;
+        }
         int startX,startY;
         srd::string menuText;
         char trigger;

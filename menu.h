@@ -7,6 +7,12 @@
 
 class Menu {
     public:
+        Menu(WINDOW *win,MenuItem* mi,int num)
+        {
+            this->menuWindow = win;
+            this->mItem = mi;
+            this->numMenus = num;
+        }
         WINDOW *menuWindow;
         MenuItem *mItem;    
         int numMenus;
