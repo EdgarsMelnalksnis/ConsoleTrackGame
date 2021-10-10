@@ -10,9 +10,9 @@ class Menu {
     public:
 
         Menu(int *menuStartPos,int *menuSize);
- 
+
         WINDOW *menuWin;
-        MenuItem mItem={"FILE",yxStart};//multiple menu items    
+        MenuItem mItem[3]={{"FILE",yxStart},{"FILE",yxStart},{"FILE",yxStart}};//multiple menu items    
         int yxStart[2];
         int yxSize[2];
         int numMenus;
@@ -20,7 +20,7 @@ class Menu {
         int menuChoice;
         int menuHighlight = 0;
 
-        void drawMenu(WINDOW *,MenuItem);//methode to draw menu. Class Game will choose where to draw it based on screen size
+        void drawMenu(WINDOW *,MenuItem *);//methode to draw menu. Class Game will choose where to draw it based on screen size
 };
 
 

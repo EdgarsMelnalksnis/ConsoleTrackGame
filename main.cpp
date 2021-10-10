@@ -25,7 +25,7 @@ int main(int argc,char **argv){
     //test
     int yMax,xMax;
     int startpos[]={1,1};
-    int dim[]={5,10};
+    int dim[]={10,20};
 
     initscr();
     noecho();
@@ -48,8 +48,6 @@ int main(int argc,char **argv){
     wrefresh(gameWin);
 
     //Vehicle *c = new Vehicle(gameWin,1,1,'0');
-    //menuWin = newwin(INS_WIN_HEIGHT,INS_WIN_WIDTH,(yMax/2-10),GAME_WIN_X+GAME_WIN_WIDTH+5);   
-    //  refresh();
     /*
        do{
        c->display();
