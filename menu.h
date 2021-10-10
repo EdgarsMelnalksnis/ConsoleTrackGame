@@ -10,7 +10,7 @@ class Menu {
     public:
 
         Menu(int *menuStartPos,int *menuSize);
-
+    private:
         WINDOW *menuWin;
         MenuItem mItem[3]={{"FILE",yxStart},{"FILE",yxStart},{"FILE",yxStart}};//multiple menu items    
         int yxStart[2];
