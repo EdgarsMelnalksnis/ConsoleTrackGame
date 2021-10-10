@@ -20,13 +20,8 @@ void checkScreenSize(int ymin,int xmin)
     }
 }
 
-
-int main(int argc,char **argv){	
-    //test
-    int yMax,xMax;
-    int startpos[]={1,1};
-    int dim[]={10,20};
-
+void initScreen(void)
+{
     initscr();
     noecho();
     cbreak();//ctr+c exits program
@@ -35,55 +30,25 @@ int main(int argc,char **argv){
     clear();
     refresh();
 
+}
+
+
+int main(int argc,char **argv){	
+    //test
+    int yMax,xMax;
+    int startpos[]={1,1};
+    int dim[]={10,20};
+
+    initScreen();
+
     Menu men(startpos,dim);
 
     refresh();
+    int lastChoice=0;
     while(1)
-
-        getmaxyx(stdscr,yMax,xMax);
-
-    WINDOW* gameWin = newwin(GAME_WIN_HEIGHT,GAME_WIN_WIDTH,(yMax/2)-10,GAME_WIN_X);
-    box(gameWin,0,0);
-    refresh();
-    wrefresh(gameWin);
-
-    //Vehicle *c = new Vehicle(gameWin,1,1,'0');
-    /*
-       do{
-       c->display();
-       wrefresh(gameWin);
-       }while(c->getMove() != 'x');
-
-       while(1)
-       {
-       for(int i = 0; i<3;i++)
-       {
-       if(i == menuHighlight)
-       wattron(menuWin,A_REVERSE);
-       mvwprintw(menuWin,i+3,1,menu[i].c_str());
-       wattroff(menuWin, A_REVERSE);
-       }
-       menuChoice = wgetch(menuWin);
-       switch(menuChoice)
-       {
-       case KEY_UP:
-       menuHighlight--;
-       if(menuHighlight<0) menuHighlight = 0;
-       break;
-       case KEY_DOWN:
-       menuHighlight++;
-       if(menuHighlight>2) menuHighlight = 2;
-       break;
-       default:
-       break;
-       }         
-       if(menuChoice == ENTER) break;
-       }
-       werase(menuWin);
-       if(menu[menuHighlight] == "HELP") mvwprintw(menuWin,1,1,"HELP ME :D");
-       else mvwprintw(menuWin,3,1,"in construction");
-       wrefresh(menuWin);
-     */
+    {
+        lastChoice=men.updateMenu(lastChoice);
+    }
     getch();			/* Wait for user input */
     endwin();			/* End curses mode		  */
     return 0;

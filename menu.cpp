@@ -22,3 +22,41 @@ void Menu::drawMenu(WINDOW *win,MenuItem *menuIt)//methode to draw menu. Class G
     // keypad(menuWin,true);
 }
 
+int  Menu::updateMenu(int menuHighlight)
+{
+    keypad(menuWin, TRUE);
+    //int menuHighlight=lastChoice;
+    while(1)
+    {
+        for(int i = 0; i<3;i++)
+        {
+            if(i == menuHighlight) 
+            {
+                wattron(menuWin,A_REVERSE);
+            }
+            mvwprintw(menuWin,i+3,1,mItem[i].menuText);
+            wattroff(menuWin, A_REVERSE);
+        }
+        menuChoice = wgetch(menuWin);
+        switch(menuChoice)
+        {
+            case KEY_UP:
+                menuHighlight--;
+                if(menuHighlight<0) menuHighlight = 0;
+                break;
+            case KEY_DOWN:
+                menuHighlight++;
+                if(menuHighlight>2) menuHighlight = 2;
+                break;
+            default:
+                break;
+        }         
+        if(menuChoice == ENTER) break ;
+        wrefresh(menuWin);
+    }   
+    werase(menuWin);
+    if(mItem[menuHighlight].menuText == "HELP") mvwprintw(menuWin,1,1,"HELP ME :D");
+    else mvwprintw(menuWin,3,1,"in construction");
+    wrefresh(menuWin);
+return menuHighlight;
+}

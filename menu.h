@@ -9,6 +9,8 @@
 class Menu {
     public:
         Menu(int *menuStartPos,int *menuSize);
+        int updateMenu(int);
+     
     private:
         WINDOW *menuWin;
         MenuItem mItem[3]={{"GAME"},{"TRACK"},{"HELP"}};//multiple menu items    
@@ -16,7 +18,7 @@ class Menu {
         int *yxSize;
         int numMenus = 3;
         int menuChoice = 0;
-        int menuHighlight = 0;
+        int menuHighlight1 = 0;
 
         void drawMenu(WINDOW *,MenuItem *);
 };
