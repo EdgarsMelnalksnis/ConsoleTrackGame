@@ -2,10 +2,8 @@
 
 Menu::Menu(int* menuStartPos,int* menuSize)
 {
-    this->yxStart[0] = menuStartPos[0];
-    this->yxStart[1] = menuStartPos[1];
-    this->yxSize[0] = menuSize[0];
-    this->yxSize[1] = menuSize[1];
+    this->yxStart = menuStartPos;
+    this->yxSize = menuSize;
     this->menuWin = newwin(yxSize[0],yxSize[1],yxStart[0],yxStart[1]);
 
     drawMenu(menuWin,this->mItem);
