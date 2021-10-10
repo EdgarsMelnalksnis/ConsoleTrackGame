@@ -15,19 +15,13 @@ class Menu {
             this->yxStart[1] = menuStartPos[1];
             this->yxSize[0] = menuSize[0];
             this->yxSize[1] = menuSize[1];
+            this->menuWin = newwin(yxSize[0],yxSize[1],(yxSize[0]/2-10),GAME_WIN_X+GAME_WIN_WIDTH+5);
 
-           
-
-            WINDOW *menuWin = newwin(yxSize[0],yxSize[1],(yxSize[0]/2-10),GAME_WIN_X+GAME_WIN_WIDTH+5);
-            box(menuWin,0,0);
-            mvwprintw(menuWin,1,1,"MENU");
-            wrefresh(menuWin);
-            keypad(menuWin,true);
-
+            drawMenu(menuWin);
         }
 
-
-        // WINDOW *menuWindow;
+    private:
+        WINDOW *menuWin;
         MenuItem *mItem;//multiple menu items    
         int *yxStart;
         int *yxSize;
@@ -36,7 +30,13 @@ class Menu {
         int menuChoice;
         int menuHighlight = 0;
 
-        void drawMenu(int xyStart[],int xySize[]);//methode to draw menu. Class Game will choose where to draw it based on screen size
+        void drawMenu(WINDOW *win)//methode to draw menu. Class Game will choose where to draw it based on screen size
+        {
+            box(win,0,0);
+            mvwprintw(win,1,1,"MENU");
+            wrefresh(win);
+            // keypad(menuWin,true);
+        }
 };
 
 
