@@ -25,7 +25,7 @@ int main(int argc,char **argv){
     //test
     int yMax,xMax;
     int startpos[]={1,1};
-    int dim[]={30,40};
+    int dim[]={5,10};
 
     initscr();
     noecho();
