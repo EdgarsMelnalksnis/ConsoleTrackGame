@@ -5,13 +5,15 @@
 
 class MenuItem {
     public:
-        MenuItem(string text,char trig)
+        MenuItem(const char* text,int yx[])
         {
-            this-> menuText = text;
-            this-> trigger = trig;
+            this->menuText = text;
+            this->startYX[0]=yx[0];
+            this->startYX[1]=yx[1];
+
         }
-        int startX,startY;
-        srd::string menuText;
+        int startYX[2];
+        const char* menuText;
         char trigger;
 };
 
