@@ -5,14 +5,10 @@
 
 class MenuItem {
     public:
-        MenuItem(const char* text,int yx[])
+        MenuItem(const char* text)
         {
             this->menuText = text;
-            this->startYX[0]=yx[0];
-            this->startYX[1]=yx[1];
-
         }
-        int startYX[2];
         const char* menuText;
         char trigger;
 };

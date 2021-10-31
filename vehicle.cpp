@@ -12,23 +12,27 @@ Vehicle::Vehicle(WINDOW *win,int y,int x, char c)
 
 void Vehicle::moveUp()
 {
+    mvwaddch(gameWin,yPos,xPos,' ');
     yPos--;
     if(yPos < 1) yPos = 1;
 }
 void Vehicle::moveDown()
 {
+    mvwaddch(gameWin,yPos,xPos,' ');
     yPos++;
     if(yPos > yMax-2) yPos = yMax-2;
 }
 
 void Vehicle::moveLeft()
 {
+    mvwaddch(gameWin,yPos,xPos,' ');
     xPos--;
     if(xPos < 1) xPos = 1;
 }
 
 void Vehicle::moveRight()
 {
+    mvwaddch(gameWin,yPos,xPos,' ');
     xPos++;
     if(xPos > xMax-2) xPos = xMax -2;
 }
