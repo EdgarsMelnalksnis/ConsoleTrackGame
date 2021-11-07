@@ -4,11 +4,17 @@
 #include <iostream>
 #include <ncurses.h>
 #include "game.h"
+#include "config.h"
 
-class GameObject
-{
+class GameObject{
+    void initScr(void);
+    enum gameStatus {STOP = 0, RUN = 1, PAUSE = 2};
+    void checkScreenSize(int,int);
+
     public:
-        void checkScreenSize(int,int);
+    GameObject(){
+        initScr();
+    }
 
 };
 
