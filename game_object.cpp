@@ -1,46 +1,45 @@
 #include "game_object.h"
 #include "ncurses.h"
+
 void GameObject::initScr(void){
+    const int yMin = 30;
+    const int xMin = 90;
     initscr();
     noecho();
     cbreak();//ctr+c exits program
-    checkScreenSize(YMIN,XMIN);
+    checkScreenSize(yMin,xMin);
 
     clear();
     refresh();
 
 }
 
-
-
-
 void GameObject::checkScreenSize(int ymin,int xmin)
 {
     int y,x;
-    std::cout << "Line:" << __LINE__ << std::endl;
     getmaxyx(stdscr,y,x);
-    std::cout << "Line:" << __LINE__ << std::endl;
     if(y < ymin || x < xmin){ 
         printw("screen too small!!!");
         getch();
     }
-    /* FIXME
-       while(y < ymin || x < xmin)
+   /*FIXME 
+       while((y < ymin ) || ( x < xmin))
        {
        getmaxyx(stdscr,y,x);
        clear();
        printw("Make screen larger. yMax > %d (%d), xMax > %d(%d) !",ymin,y,xmin,x);
        }
-       */
+     */  
     refresh();
 
 }
 
 
-void GameObject::update(){
-    Menu men(startpos,dim);
+void GameObject::play(){
+    Game game(gameStartpos,gameDim);//
+    Menu men(menuStartpos,menuDim);
     int lastch = 0;
-    while(1){
+    while(1){ //add status to end Game
         lastch=men.updateMenu(lastch);
     }
 }

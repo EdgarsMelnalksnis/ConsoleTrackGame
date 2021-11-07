@@ -9,8 +9,10 @@
 
 class GameObject{
     int yMax,xMax;
-    int startpos[2]={1,1};
-    int dim[2]={10,20};
+    int gameStartpos[2]={1,1};
+    int gameDim[2]={10,20};
+    int menuStartpos[2]={1,gameStartpos[1]+gameDim[1]+5};
+    int menuDim[2]={10,20};
 
     void initScr(void);
     enum gameStatus {STOP = 0, RUN = 1, PAUSE = 2};
@@ -19,9 +21,8 @@ class GameObject{
     public:
     GameObject(){
         initScr();
-       // Menu men(startpos,dim);
     }
-    void  update();
+    void  play();
 };
 
 #endif
