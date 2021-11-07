@@ -1,5 +1,5 @@
 #include "game_object.h"
-#include "ncurses.h";
+#include "ncurses.h"
 void GameObject::initScr(void){
     initscr();
     noecho();
@@ -34,4 +34,13 @@ void GameObject::checkScreenSize(int ymin,int xmin)
        */
     refresh();
 
+}
+
+
+void GameObject::update(){
+    Menu men(startpos,dim);
+    int lastch = 0;
+    while(1){
+        lastch=men.updateMenu(lastch);
+    }
 }
