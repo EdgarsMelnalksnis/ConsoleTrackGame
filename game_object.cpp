@@ -4,9 +4,7 @@ GameObject::GameObject() {
     initScr();
 }
 void GameObject::initScr(void) {
-    const int yMin = 30;
-    const int xMin = 90;
-    initscr();
+    initscr();//ncureses function
     noecho();
     cbreak();//ctr+c exits program
     checkScreenSize(yMin,xMin);
@@ -19,28 +17,24 @@ void GameObject::initScr(void) {
 void GameObject::checkScreenSize(int ymin,int xmin) {
     int y,x;
     getmaxyx(stdscr,y,x);
-    if(y < ymin || x < xmin){ 
-        printw("screen too small!!!");
-        getch();
+    if((y < ymin ) || ( x < xmin)) {
+        while((y < ymin ) || ( x < xmin))
+        {
+            clear();
+            printw("Make screen larger. yMax > %d (%d), xMax > %d(%d) !",ymin,y,xmin,x);
+            getmaxyx(stdscr,y,x);
+            refresh();
+        }
     }
-    //FIXME 
-    /*    while((y < ymin ) || ( x < xmin))
-          {
-          getmaxyx(stdscr,y,x);
-          clear();
-          printw("Make screen larger. yMax > %d (%d), xMax > %d(%d) !",ymin,y,xmin,x);
-          }
-          */
-    refresh();
-
 }
-
-
 void GameObject::play() {
     Game game(gameStartpos,gameDim);//
     Menu men(menuStartpos,menuDim);
+    mvprintw(titleStartPos[0],titleStartPos[1],"Track Game");
+    refresh();
     int lastch = 0;
     while(1){ //add status to end Game
         lastch=men.updateMenu(lastch);
+        //checkScreenSize(yMin,xMin);
     }
 }
