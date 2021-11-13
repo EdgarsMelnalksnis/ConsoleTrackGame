@@ -1,10 +1,11 @@
 #ifndef _MENU_H
 #define _MENU_H
 
-#include <curses.h>
+#include <ncurses.h>
 #include <string>
 #include "menu_item.h"
 #include "config.h"
+#include "window.h"
 
 class Menu {
     public:
@@ -22,10 +23,5 @@ class Menu {
 
         void drawMenu(WINDOW *,MenuItem *);
 };
-
-
-
-
-
 
 #endif

@@ -5,20 +5,21 @@
 
 class Vehicle
 {
-    WINDOW *gameWin;
-    char character;
-    int yPos,xPos,yMax,xMax;
-
-
     public:
-    Vehicle(WINDOW*,int,int,char);
+        Vehicle(WINDOW*,int,int,char);
 
-    void moveUp();
-    void moveDown();
-    void moveLeft();
-    void moveRight();
-    int getMove();
-    void display();
+    private:
+        void moveUp();
+        void moveDown();
+        void moveLeft();
+        void moveRight();
+        int getMove();
+        void display();
+
+        WINDOW *gameWin;
+        char character;
+        int yPos,xPos,yMax,xMax;
+
 
 };
 
