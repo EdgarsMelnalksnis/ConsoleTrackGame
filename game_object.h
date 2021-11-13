@@ -16,10 +16,13 @@ class GameObject{
 
     private:
         int yMax,xMax;
-        int gameStartpos[2]={1,1};
-        int gameDim[2]={10,20};
-        int menuStartpos[2]={1,gameStartpos[1]+gameDim[1]+5};
-        int menuDim[2]={10,20};
+        const int titleStartPos[2] = {1,1};
+        const int gameStartpos[2]={titleStartPos[0]+4,1};
+        const int gameDim[2]={20,40};
+        const int menuStartpos[2]={gameStartpos[0],gameStartpos[1]+gameDim[1]+5};
+        const int menuDim[2]={10,20};
+        const int yMin = 30;
+        const int xMin = 90;
 
         void initScr(void);
         enum gameStatus {STOP = 0, RUN = 1, PAUSE = 2};

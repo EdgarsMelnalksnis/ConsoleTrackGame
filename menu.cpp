@@ -1,6 +1,6 @@
 #include "menu.h"
 
-Menu::Menu(int* menuStartPos,int* menuSize)
+Menu::Menu(const int* menuStartPos,const int* menuSize)
 {
     this->yxStart = menuStartPos;
     this->yxSize = menuSize;

@@ -1,6 +1,6 @@
 #include "game.h"
 
-Game::Game(int* gameStartPos,int* gameSize)
+Game::Game(const int* gameStartPos,const int* gameSize)
 {
     this->yxStart = gameStartPos;
     this->yxSize = gameSize;

@@ -9,14 +9,14 @@
 
 class Menu {
     public:
-        Menu(int *menuStartPos,int *menuSize);
+        Menu(const int *menuStartPos,const int *menuSize);
         int updateMenu(int);
      
     private:
         WINDOW *menuWin;
         MenuItem mItem[3]={{"GAME"},{"TRACK"},{"HELP"}};//multiple menu items    
-        int *yxStart;
-        int *yxSize;
+        const int *yxStart;
+        const int *yxSize;
         int numMenus = 3;
         int menuChoice = 0;
         int menuHighlight1 = 0;

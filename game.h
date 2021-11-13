@@ -8,13 +8,13 @@
 
 class Game {
     public:
-        Game(int *gameStartPos,int *gameSize);
+        Game(const int *gameStartPos,const int *gameSize);
         int updateGame(int);
 
     private:
         WINDOW *gameWin;
-        int *yxStart;
-        int *yxSize;
+        const int *yxStart;
+        const int *yxSize;
         
         void drawGame(WINDOW *);
 };
