@@ -7,8 +7,8 @@
 
 int main(int argc,char **argv){	
     GameObject *trackGame = new GameObject;
-    refresh();//refreshes screen to match what is in memory
 
+    refresh();
     trackGame->play();
 
     getch();			/* Wait for user input */

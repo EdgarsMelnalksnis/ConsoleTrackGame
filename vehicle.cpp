@@ -1,44 +1,44 @@
 #include "vehicle.h"
 
-Vehicle::Vehicle(WINDOW *win,int y,int x, char c)
+void Vehicle::init(WINDOW *win,int y,int x, char c)
 {
-    gameWin= win;
-    yPos = y;
-    xPos = x;
-    getmaxyx(gameWin,yMax,xMax);
-    keypad(gameWin,true);
+    this->gmWin = win;
+    this->yPos = y;
+    this->xPos = x;
+    getmaxyx(gmWin,yMax,xMax);
+    keypad(gmWin,true);
     character = c;
 }
 
 void Vehicle::moveUp()
 {
-    mvwaddch(gameWin,yPos,xPos,' ');
+    mvwaddch(gmWin,yPos,xPos,'.');
     yPos--;
     if(yPos < 1) yPos = 1;
 }
 void Vehicle::moveDown()
 {
-    mvwaddch(gameWin,yPos,xPos,' ');
+    mvwaddch(gmWin,yPos,xPos,'.');
     yPos++;
     if(yPos > yMax-2) yPos = yMax-2;
 }
 
 void Vehicle::moveLeft()
 {
-    mvwaddch(gameWin,yPos,xPos,' ');
+    mvwaddch(gmWin,yPos,xPos,'.');
     xPos--;
     if(xPos < 1) xPos = 1;
 }
 
 void Vehicle::moveRight()
 {
-    mvwaddch(gameWin,yPos,xPos,' ');
+    mvwaddch(gmWin,yPos,xPos,'.');
     xPos++;
     if(xPos > xMax-2) xPos = xMax -2;
 }
 int Vehicle::getMove()
 {
-    int choice = wgetch(gameWin);
+    int choice = wgetch(gmWin);
         switch(choice)
         {
             case KEY_UP:
@@ -59,8 +59,9 @@ int Vehicle::getMove()
 return choice;
 }
 
-void Vehicle::display()
-{
-mvwaddch(gameWin,yPos,xPos, character);//single character instead of string
+void Vehicle::display() {
+//single character instead of string
+mvwaddch(gmWin,yPos,xPos, character);
+wrefresh(gmWin);
 }
 

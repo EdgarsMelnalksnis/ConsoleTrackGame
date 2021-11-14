@@ -26,12 +26,12 @@ int  Menu::updateMenu(int menuHighlight)
 {
     keypad(menuWin, TRUE);
     //int menuHighlight=lastChoice;
-    while(1)
-    {
+    while(1) {
         for(int i = 0; i<3;i++)
         {
             if(i == menuHighlight) 
             {
+                //reverse color
                 wattron(menuWin,A_REVERSE);
             }
             mvwprintw(menuWin,i+3,1,mItem[i].menuText);

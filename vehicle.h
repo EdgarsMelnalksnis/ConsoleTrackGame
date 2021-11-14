@@ -6,9 +6,8 @@
 class Vehicle
 {
     public:
-        Vehicle(WINDOW*,int,int,char);
-
-    private:
+        //Vehicle(WINDOW *,int,int,char);
+        void init(WINDOW *,int,int,char);
         void moveUp();
         void moveDown();
         void moveLeft();
@@ -16,7 +15,8 @@ class Vehicle
         int getMove();
         void display();
 
-        WINDOW *gameWin;
+    //private:
+        WINDOW *gmWin;
         char character;
         int yPos,xPos,yMax,xMax;
 

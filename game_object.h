@@ -6,6 +6,7 @@
 #include "game.h"
 #include "config.h"
 #include "menu.h"
+#include "vehicle.h"
 
 class GameObject{
     public:
