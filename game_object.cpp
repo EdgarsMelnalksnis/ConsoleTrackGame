@@ -27,13 +27,13 @@ void GameObject::checkScreenSize(int ymin,int xmin) {
         }
     }
 }
-void GameObject::play() {
+void GameObject::start() {
     Game *game = new Game(gameStartpos,gameDim);//
     Menu men(menuStartpos,menuDim);
     refresh();
     int lastch = 0;
     while(1){ //add status to end Game
-       // game->playGame();
+       game->playGame();
         //lastch=men.updateMenu(lastch);
         //checkScreenSize(yMin,xMin);
 

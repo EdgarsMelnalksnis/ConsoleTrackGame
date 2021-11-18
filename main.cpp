@@ -9,7 +9,7 @@ int main(int argc,char **argv){
     GameObject *trackGame = new GameObject;
 
     refresh();
-    trackGame->play();
+    trackGame->start();
 
     getch();			/* Wait for user input */
     endwin();			/* End curses mode		  */

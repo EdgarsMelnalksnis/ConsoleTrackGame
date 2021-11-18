@@ -13,7 +13,7 @@ class GameObject{
         GameObject();
         //    initScr();
         //}
-        void  play();
+        void  start();
 
     private:
         int yMax,xMax;
