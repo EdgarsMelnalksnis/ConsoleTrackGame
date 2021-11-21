@@ -21,7 +21,7 @@ class GameObject{
         const int gameStartpos[2]={titleStartPos[0]+4,1};
         const int gameDim[2]={20,40};
         const int menuStartpos[2]={gameStartpos[0],gameStartpos[1]+gameDim[1]+5};
-        const int menuDim[2]={10,20};
+        const int menuDim[2]={20,30};
         const int yMin = 30;
         const int xMin = 90;
 

@@ -14,7 +14,7 @@ class Menu {
      
     private:
         WINDOW *menuWin;
-        MenuItem mItem[3]={{"GAME"},{"TRACK"},{"HELP"}};//multiple menu items    
+        MenuItem mItem[3]={{"GAME"},{"TRACK"},{"HELP"}};    
         const int *yxStart;
         const int *yxSize;
         int numMenus = 3;

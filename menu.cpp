@@ -14,10 +14,10 @@ Menu::Menu(const int* menuStartPos,const int* menuSize)
 void Menu::drawMenu(WINDOW *win,MenuItem *menuIt)//methode to draw menu. Class Game will choose where to draw it based on screen size
 {
     box(win,0,0);
-    mvwprintw(win,1,1,"MENU");
-    mvwprintw(win,3,1,menuIt[0].menuText);
-    mvwprintw(win,4,1,menuIt[1].menuText);
-    mvwprintw(win,5,1,menuIt[2].menuText);
+    //mvwprintw(win,0,1,"MENU");
+    mvwprintw(win,0,1,menuIt[0].menuText);
+    mvwprintw(win,0,6,menuIt[1].menuText);
+    mvwprintw(win,0,12,menuIt[2].menuText);
     wrefresh(win);
     // keypad(menuWin,true);
 }
@@ -27,24 +27,27 @@ int  Menu::updateMenu(int menuHighlight)
     keypad(menuWin, TRUE);
     //int menuHighlight=lastChoice;
     while(1) {
-        for(int i = 0; i<3;i++)
+        for(int i = 0; i < 3; i++)//while size of menuItem
         {
             if(i == menuHighlight) 
             {
                 //reverse color
                 wattron(menuWin,A_REVERSE);
             }
-            mvwprintw(menuWin,i+3,1,mItem[i].menuText);
+            if(i == 0) 
+            mvwprintw(menuWin,0,1,mItem[i].menuText);
+            else 
+            mvwprintw(menuWin,0,i*6,mItem[i].menuText);
             wattroff(menuWin, A_REVERSE);
         }
         menuChoice = wgetch(menuWin);
         switch(menuChoice)
         {
-            case KEY_UP:
+            case KEY_LEFT:
                 menuHighlight--;
                 if(menuHighlight<0) menuHighlight = 0;
                 break;
-            case KEY_DOWN:
+            case KEY_RIGHT:
                 menuHighlight++;
                 if(menuHighlight>2) menuHighlight = 2;
                 break;

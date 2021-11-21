@@ -6,7 +6,10 @@ GameObject::GameObject() {
 void GameObject::initScr(void) {
     initscr();//ncureses function
     noecho();
+    curs_set(0);//no cursor ?
     cbreak();//ctr+c exits program
+    nodelay(stdscr, TRUE);
+    //scrollok(stdscr, TRUE);
     checkScreenSize(yMin,xMin);
 
     clear();
@@ -32,10 +35,11 @@ void GameObject::start() {
     Menu men(menuStartpos,menuDim);
     refresh();
     int lastch = 0;
+    char c;
+    gameStatus gameStat;
     while(1){ //add status to end Game
-       game->playGame();
-        //lastch=men.updateMenu(lastch);
+        
+            lastch=men.updateMenu(lastch);
         //checkScreenSize(yMin,xMin);
-
     }
 }
