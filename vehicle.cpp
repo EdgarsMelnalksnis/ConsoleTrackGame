@@ -1,7 +1,6 @@
 #include "vehicle.h"
-
-void Vehicle::init(WINDOW *win,int y,int x, char c)
-{
+#include "config.h"
+void Vehicle::init(WINDOW *win,int y,int x, char c) {
     this->gmWin = win;
     this->yPos = y;
     this->xPos = x;
@@ -10,58 +9,64 @@ void Vehicle::init(WINDOW *win,int y,int x, char c)
     character = c;
 }
 
-void Vehicle::moveUp()
-{
+void Vehicle::moveUp() {
     mvwaddch(gmWin,yPos,xPos,'.');
     yPos--;
-    if(yPos < 1) yPos = 1;
+    if(yPos < 1) {
+	yPos = 1;
+    }
 }
-void Vehicle::moveDown()
-{
+void Vehicle::moveDown() {
     mvwaddch(gmWin,yPos,xPos,'.');
     yPos++;
-    if(yPos > yMax-2) yPos = yMax-2;
+    if(yPos > yMax-2) {
+	yPos = yMax-2;
+    }
 }
 
-void Vehicle::moveLeft()
-{
+void Vehicle::moveLeft() {
     mvwaddch(gmWin,yPos,xPos,'.');
     xPos--;
-    if(xPos < 1) xPos = 1;
+    if(xPos < 1) {
+	xPos = 1;
+    }
 }
 
-void Vehicle::moveRight()
-{
+void Vehicle::moveRight() {
     mvwaddch(gmWin,yPos,xPos,'.');
     xPos++;
-    if(xPos > xMax-2) xPos = xMax -2;
+    if(xPos > xMax-2) {
+	xPos = xMax -2;
+    }
 }
-int Vehicle::getMove()
-{
+int Vehicle::getMove() {
+    nodelay(gmWin,true);
     int choice = wgetch(gmWin);
-        switch(choice)
-        {
-            case KEY_UP:
-                moveUp();
-                break;
-            case KEY_DOWN:
-                moveDown();
-                break;
-            case KEY_LEFT:
-                moveLeft();
-                break;
-            case KEY_RIGHT:
-                moveRight();
-                break;
-            default:
-                break;
-        }
-return choice;
+    switch(choice) {
+	case KEY_UP:
+	    moveUp();
+	    break;
+	case KEY_DOWN:
+	    moveDown();
+	    break;
+	case KEY_LEFT:
+	    moveLeft();
+	    break;
+	case KEY_RIGHT:
+	    moveRight();
+	    break;
+	case SPACE:
+	    wgetch(gmWin);
+	    break;
+	default:
+	    break;
+    }
+    return choice;
 }
 
 void Vehicle::display() {
-//single character instead of string
-mvwaddch(gmWin,yPos,xPos, character);
-wrefresh(gmWin);
+    //single character instead of string
+    mvwaddch(gmWin,yPos,xPos, character);
+    //wrefresh(gmWin);
 }
 

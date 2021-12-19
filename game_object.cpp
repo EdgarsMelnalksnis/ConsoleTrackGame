@@ -4,7 +4,7 @@ GameObject::GameObject() {
     initScr();
 }
 void GameObject::initScr(void) {
-    initscr();//ncureses function
+    initscr();
     noecho();
     curs_set(0);//no cursor ?
     cbreak();//ctr+c exits program
@@ -21,25 +21,41 @@ void GameObject::checkScreenSize(int ymin,int xmin) {
     int y,x;
     getmaxyx(stdscr,y,x);
     if((y < ymin ) || ( x < xmin)) {
-        while((y < ymin ) || ( x < xmin))
-        {
-            clear();
-            printw("Make screen larger. yMax > %d (%d), xMax > %d(%d) !",ymin,y,xmin,x);
-            getmaxyx(stdscr,y,x);
-            refresh();
-        }
+	while((y < ymin ) || ( x < xmin)) {
+	    clear();
+	    printw("Make screen larger. yMax > %d (%d), \ 
+		    xMax > %d(%d) !",ymin,y,xmin,x);
+	    getmaxyx(stdscr,y,x);
+	    refresh();
+	}
     }
 }
 void GameObject::start() {
     Game *game = new Game(gameStartpos,gameDim);//
     Menu men(menuStartpos,menuDim);
+    WINDOW *helpWin = newwin(4,15,1,1);
+    box(helpWin,0,0);
     refresh();
     int lastch = 0;
     char c;
     gameStatus gameStat;
-    while(1){ //add status to end Game
-        
-            lastch=men.updateMenu(lastch);
-        //checkScreenSize(yMin,xMin);
+    int toggle = 0;
+    //nodelay(helpWin,true);
+    while(1){ 
+	//c = wgetch(helpWin);
+	//toggle++;
+	//if(c != ERR) {
+	//  if(c == SPACE) {
+	//	toggle = toggle ^ 1;
+	//  }
+	//}
+	//mvwprintw(helpWin,1,1,"Toggle:%d",toggle);
+	//wrefresh(helpWin);
+	// if(toggle & 1) {
+	//   lastch=men.updateMenu(lastch);
+	//  }
+	// else {
+	game->playGame();
+	// }
     }
 }

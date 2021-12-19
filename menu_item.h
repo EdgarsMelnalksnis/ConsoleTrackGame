@@ -5,8 +5,7 @@
 
 class MenuItem {
     public:
-        MenuItem(const char* text)
-        {
+        MenuItem(const char* text) {
             this->menuText = text;
         }
         const char* menuText;
