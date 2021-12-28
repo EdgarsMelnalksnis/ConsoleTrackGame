@@ -7,6 +7,7 @@ void Vehicle::init(WINDOW *win,int y,int x, char c) {
     getmaxyx(gmWin,yMax,xMax);
     keypad(gmWin,true);
     character = c;
+    this->speed = 1;
 }
 
 int Vehicle::moveVehicle(int dir, uint16_t count) {
@@ -15,46 +16,54 @@ int Vehicle::moveVehicle(int dir, uint16_t count) {
 	switch (dir) {
 	    case KEY_UP:
 		trackChar = mvwinch(gmWin, yPos - 1, xPos);
-		if(trackChar == ' ') {
-		    mvwaddch(gmWin,yPos,xPos,'.');
+		break;
+	    case KEY_DOWN:
+		trackChar = mvwinch(gmWin, yPos + 1, xPos);
+		break;
+	    case KEY_RIGHT:
+		trackChar = mvwinch(gmWin, yPos, xPos + 1);
+		break;
+	    case KEY_LEFT:
+		trackChar = mvwinch(gmWin, yPos, xPos -1);
+		break;
+	    default:
+		break;
+	}
+	if (trackChar == ' ' || trackChar == '+' || trackChar == '-') {
+	    mvwaddch(gmWin,yPos,xPos,'.');
+	    switch (dir) {
+		case KEY_UP:
 		    if(moveUp()) {
 			retSymbol = trackChar;
 		    }
 		    break;
-		}
-		else return trackChar; 
-	    case KEY_DOWN:
-		trackChar = mvwinch(gmWin, yPos + 1, xPos);
-		if(trackChar == ' ') {
-		    mvwaddch(gmWin,yPos,xPos,'.');
+
+		case KEY_DOWN:
 		    if(moveDown()) {
 			retSymbol = trackChar;
 		    }
 		    break;
-		}
-		else return trackChar;    
-	    case KEY_RIGHT:
-		trackChar = mvwinch(gmWin, yPos, xPos + 1);
-		if(trackChar == ' ') {
-		    mvwaddch(gmWin,yPos,xPos,'.');
+
+		case KEY_RIGHT:
 		    if(moveRight()) {
 			retSymbol = trackChar;
 		    }
 		    break;
-		}
-	    case KEY_LEFT:
-		trackChar = mvwinch(gmWin, yPos, xPos -1);
-		if(trackChar == ' ') {
-		    mvwaddch(gmWin,yPos,xPos,'.');
+		case KEY_LEFT:
 		    if(moveLeft()) {
 			retSymbol = trackChar;
 		    }
 		    break;
-		}
+		default:
+		    break;
+	    }
+	}
+	else {
+	    return trackChar;
 	}
 	--count;
     }
-    return retSymbol;
+    return trackChar;
 }
 
 uint8_t Vehicle::moveUp() {

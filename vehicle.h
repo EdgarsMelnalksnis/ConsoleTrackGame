@@ -16,13 +16,14 @@ class Vehicle
         int getMove();
         int getUserInput();
         void display();
-
+	int speed;
+	int item;
+	int item_old;
     private:
         WINDOW *gmWin;
         char character;
         int yPos,xPos,yMax,xMax;
         chtype trackChar;
-
 };
 
 #endif
