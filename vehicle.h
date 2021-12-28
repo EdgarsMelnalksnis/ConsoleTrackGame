@@ -8,18 +8,20 @@ class Vehicle
     public:
         //Vehicle(WINDOW *,int,int,char);
         void init(WINDOW *,int,int,char);
-        void moveUp();
-        void moveDown();
-        void moveLeft();
-        void moveRight();
+        int moveVehicle(int,uint16_t);
+        uint8_t moveUp();
+        uint8_t moveDown();
+        uint8_t moveLeft();
+        uint8_t moveRight();
         int getMove();
+        int getUserInput();
         void display();
 
-    //private:
+    private:
         WINDOW *gmWin;
         char character;
         int yPos,xPos,yMax,xMax;
-
+        chtype trackChar;
 
 };
 

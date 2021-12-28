@@ -22,7 +22,8 @@ void Game::drawGame(WINDOW *win) {
 }
 
 void Game::playGame() {
-    choice = car.getMove();
+    choice = car.getUserInput();
+    car.moveVehicle(choice,5);
     car.display();
     wrefresh(gameWin);
 }

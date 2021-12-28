@@ -9,35 +9,83 @@ void Vehicle::init(WINDOW *win,int y,int x, char c) {
     character = c;
 }
 
-void Vehicle::moveUp() {
-    mvwaddch(gmWin,yPos,xPos,'.');
+int Vehicle::moveVehicle(int dir, uint16_t count) {
+    int retSymbol;
+    while(count) {
+	switch (dir) {
+	    case KEY_UP:
+		trackChar = mvwinch(gmWin, yPos - 1, xPos);
+		if(trackChar == ' ') {
+		    mvwaddch(gmWin,yPos,xPos,'.');
+		    if(moveUp()) {
+			retSymbol = trackChar;
+		    }
+		    break;
+		}
+		else return trackChar; 
+	    case KEY_DOWN:
+		trackChar = mvwinch(gmWin, yPos + 1, xPos);
+		if(trackChar == ' ') {
+		    mvwaddch(gmWin,yPos,xPos,'.');
+		    if(moveDown()) {
+			retSymbol = trackChar;
+		    }
+		    break;
+		}
+		else return trackChar;    
+	    case KEY_RIGHT:
+		trackChar = mvwinch(gmWin, yPos, xPos + 1);
+		if(trackChar == ' ') {
+		    mvwaddch(gmWin,yPos,xPos,'.');
+		    if(moveRight()) {
+			retSymbol = trackChar;
+		    }
+		    break;
+		}
+	    case KEY_LEFT:
+		trackChar = mvwinch(gmWin, yPos, xPos -1);
+		if(trackChar == ' ') {
+		    mvwaddch(gmWin,yPos,xPos,'.');
+		    if(moveLeft()) {
+			retSymbol = trackChar;
+		    }
+		    break;
+		}
+	}
+	--count;
+    }
+    return retSymbol;
+}
+
+uint8_t Vehicle::moveUp() {
     yPos--;
-    if(yPos < 1) {
-	yPos = 1;
+    if(yPos < 2) {
+	return 0;
     }
+    return 1;
 }
-void Vehicle::moveDown() {
-    mvwaddch(gmWin,yPos,xPos,'.');
+uint8_t Vehicle::moveDown() {
     yPos++;
-    if(yPos > yMax-2) {
-	yPos = yMax-2;
+    if(yPos > yMax - 2) {
+	return 0;
     }
+    return 1;
 }
 
-void Vehicle::moveLeft() {
-    mvwaddch(gmWin,yPos,xPos,'.');
+uint8_t Vehicle::moveLeft() {
     xPos--;
-    if(xPos < 1) {
-	xPos = 1;
+    if(xPos < 2) {
+	return 0;
     }
+    return 1;
 }
 
-void Vehicle::moveRight() {
-    mvwaddch(gmWin,yPos,xPos,'.');
+uint8_t Vehicle::moveRight() {
     xPos++;
-    if(xPos > xMax-2) {
-	xPos = xMax -2;
+    if(xPos > xMax - 2) {
+	return 0;
     }
+    return 1;
 }
 int Vehicle::getMove() {
     nodelay(gmWin,true);
@@ -62,6 +110,10 @@ int Vehicle::getMove() {
 	    break;
     }
     return choice;
+}
+
+int Vehicle::getUserInput() {
+    return wgetch(gmWin);
 }
 
 void Vehicle::display() {

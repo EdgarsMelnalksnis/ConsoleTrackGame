@@ -9,7 +9,13 @@ int Player::moveVehicle(uint8_t dir, int count) {
     int return_val = count; 	
     for (int i = 0; i < count; ++i) {
 	switch (dir) { 
-	    case 1: 	    
+	    case KEY_LEFT: 	    
+		break;
+	    case KEY_RIGHT: 	    
+		break;
+	    case KEY_UP: 	    
+		break;
+	    case KEY_DOWN: 	    
 		break;
 	}
     }
