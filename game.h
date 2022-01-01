@@ -19,8 +19,8 @@ class Game {
         const int *yxSize;
         int choice;
         Vehicle car;// = new Vehicle(gameWin,2,2,'o');
-
         void drawGame(WINDOW *);
+	void randomGen(WINDOW *,int symbol,uint8_t count);
 };
 
 
